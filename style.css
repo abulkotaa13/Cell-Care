@@ -1,12 +1,15 @@
+/*---------------- Global ----------------*/
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: #2b2b2b;
     color: #f5f5f5;
     scroll-behavior: smooth;
 }
 
+/*---------------- Header ----------------*/
 header {
     display: flex;
     justify-content: space-between;
@@ -18,21 +21,20 @@ header {
 .logo {
     font-size: 2em;
     font-weight: 700;
-    background-color: #181818;
 }
 
 nav {
     display: flex;
     gap: 5px;
     background-color: #181818;
+    flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
 }
 
 nav a {
     text-decoration: none;
     font-weight: 600;
-    background-color: #181818;
     transition: all 0.3s ease;
-    margin-right: 80px;
+    margin-right: 20px; /* reduced for smaller screens */
 }
 
 nav a:hover {
@@ -41,143 +43,42 @@ nav a:hover {
     transform: scale(1.2);
 }
 
-/*-----------------------------------------*/
-
+/*---------------- Home Section ----------------*/
 .home {
     display: flex;
+    flex-wrap: wrap; /* Makes it wrap on smaller screens */
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    margin-left: 60px;
+    margin-left: 20px; /* reduced margin for small screens */
 }
 
 .home .content {
-    max-width: 50%;
+    flex: 1 1 400px; /* flexible width with minimum of 400px */
+    max-width: 600px;
 }
 
 .home h1 {
-    font-size: 4em;
+    font-size: 3em; /* slightly smaller for better responsiveness */
     font-weight: 600;
     margin-bottom: 20px;
     color: #1e90ff;
-    text-shadow: 0 0 6px #1e90ff,
-    0 0 20px #1e90ff,
-    0 0 40px #1e90ff,
-    0 0 80px rgba(30,144,255,0.6);
-  animation: neon-blue-pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes neon-blue-pulse {
-  0%, 100% {
-    text-shadow:
-      0 0 6px #1e90ff,
-      0 0 20px #1e90ff,
-      0 0 40px #1e90ff,
-      0 0 80px rgba(30,144,255,0.6);
-  }
-  50% {
-    text-shadow:
-      0 0 10px #1e90ff,
-      0 0 30px #1e90ff,
-      0 0 60px #1e90ff,
-      0 0 100px rgba(30,144,255,0.8);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .neon-blue { animation: none; }
+    text-shadow: 0 0 6px #1e90ff, 0 0 20px #1e90ff, 0 0 40px #1e90ff, 0 0 80px rgba(30,144,255,0.6);
+    animation: neon-blue-pulse 1.5s ease-in-out infinite;
 }
 
 .home p {
-    font-size: 2em;
-    color: #181818;
-}
-
-span {
-    display: block;
-    color: #1e90ff;
-    font-size: 1.4em;
-    font-weight: 700;
+    font-size: 1.5em;
+    color: #f5f5f5;
 }
 
 .home .image img {
-    max-width: 400px;
-    width: 100%;
+    max-width: 100%;
     height: auto;
     animation: float 3s ease-in-out infinite, pop 0.6s ease-out;
 }
 
-/* Floating + Pop-up animation */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.title {
-    font-size: 2em;
-    font-weight: 600;
-    width: fit-content;
-    border-bottom: #1e90ff 2px solid;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-}
-
-/* Fade-in visible */
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.home,
-.about,
-.service,
-.contact {
-    padding: 40px 20px;
-    text-align: left;
-    border-bottom: 1px solid #444;
-}
-
-.about{
-    font-size: 1.3em;
-}
-
-.sale {
-    font-size: 1.8em;
-    text-align: center;
-    padding-bottom: 20px;
-    font-weight: bold;
-}
-
-.service p {
-    border-bottom: #1e90ff 2px solid;
-    font-size: 1.2em;
-    margin: 20px 0;
-    text-align: center;
-}
-
+/*---------------- Cards ----------------*/
 .card-container {
     display: flex;
     gap: 20px;
@@ -200,34 +101,81 @@ span {
     box-shadow: 0 0 20px #1e90ff;
 }
 
-/* Glow effect */
-.glow:hover {
-    box-shadow: 0 0 15px #1e90ff;
-    color: #1e90ff;
-}
-
+/*---------------- Contact Section ----------------*/
 .contact {
     text-align: center;
-}
-
-.contact p {
-    margin: 10px 0;
 }
 
 .contact a {
     background-color: #181818;
     padding: 10px;
     border-radius: 10px;
-    width: 50%;
+    width: 80%; /* full width for smaller screens */
     display: inline-block;
     margin: 10px 0;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
+/*---------------- Footer ----------------*/
 footer p {
     display: flex;
     justify-content: center;
     padding: 20px;
     background-color: #181818;
+}
+
+/*---------------- Media Queries ----------------*/
+/* Tablets */
+@media (max-width: 1024px) {
+    .home h1 {
+        font-size: 2.5em;
+    }
+
+    nav a {
+        margin-right: 15px;
+    }
+
+    .card {
+        flex: 1 1 calc(33.33% - 20px);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .home {
+        flex-direction: column;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .home .content {
+        max-width: 100%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .card {
+        flex: 1 1 100%;
+    }
+
+    .home h1 {
+        font-size: 2em;
+    }
+
+    .home p {
+        font-size: 1.2em;
+    }
+
+    .contact a {
+        width: 100%;
+    }
 }
